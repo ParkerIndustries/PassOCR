@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		ED880C272375F936004BAA83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C262375F936004BAA83 /* AppDelegate.swift */; };
 		ED880C292375F936004BAA83 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C282375F936004BAA83 /* SceneDelegate.swift */; };
-		ED880C2B2375F936004BAA83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C2A2375F936004BAA83 /* ViewController.swift */; };
 		ED880C2E2375F936004BAA83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED880C2C2375F936004BAA83 /* Main.storyboard */; };
 		ED880C302375F937004BAA83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED880C2F2375F937004BAA83 /* Assets.xcassets */; };
 		ED880C332375F937004BAA83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED880C312375F937004BAA83 /* LaunchScreen.storyboard */; };
 		ED880C3E2375F937004BAA83 /* PassOCRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C3D2375F937004BAA83 /* PassOCRTests.swift */; };
 		ED880C492375F937004BAA83 /* PassOCRUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C482375F937004BAA83 /* PassOCRUITests.swift */; };
+		ED880C5723760180004BAA83 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C5623760180004BAA83 /* PhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 		ED880C232375F936004BAA83 /* PassOCR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassOCR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED880C262375F936004BAA83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED880C282375F936004BAA83 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ED880C2A2375F936004BAA83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ED880C2D2375F936004BAA83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED880C2F2375F937004BAA83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED880C322375F937004BAA83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		ED880C442375F937004BAA83 /* PassOCRUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PassOCRUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED880C482375F937004BAA83 /* PassOCRUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassOCRUITests.swift; sourceTree = "<group>"; };
 		ED880C4A2375F937004BAA83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED880C5623760180004BAA83 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +99,13 @@
 		ED880C252375F936004BAA83 /* PassOCR */ = {
 			isa = PBXGroup;
 			children = (
+				ED880C342375F937004BAA83 /* Info.plist */,
 				ED880C262375F936004BAA83 /* AppDelegate.swift */,
 				ED880C282375F936004BAA83 /* SceneDelegate.swift */,
-				ED880C2A2375F936004BAA83 /* ViewController.swift */,
-				ED880C2C2375F936004BAA83 /* Main.storyboard */,
-				ED880C2F2375F937004BAA83 /* Assets.xcassets */,
 				ED880C312375F937004BAA83 /* LaunchScreen.storyboard */,
-				ED880C342375F937004BAA83 /* Info.plist */,
+				ED880C2F2375F937004BAA83 /* Assets.xcassets */,
+				ED880C2C2375F936004BAA83 /* Main.storyboard */,
+				ED880C5623760180004BAA83 /* PhotoViewController.swift */,
 			);
 			path = PassOCR;
 			sourceTree = "<group>";
@@ -259,9 +259,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED880C2B2375F936004BAA83 /* ViewController.swift in Sources */,
 				ED880C272375F936004BAA83 /* AppDelegate.swift in Sources */,
 				ED880C292375F936004BAA83 /* SceneDelegate.swift in Sources */,
+				ED880C5723760180004BAA83 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +437,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z8Q82L44LS;
 				INFOPLIST_FILE = PassOCR/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -455,6 +456,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z8Q82L44LS;
 				INFOPLIST_FILE = PassOCR/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
