@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA154ABF2376071200AED264 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154ABE2376071200AED264 /* User.swift */; };
 		ED880C272375F936004BAA83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C262375F936004BAA83 /* AppDelegate.swift */; };
 		ED880C292375F936004BAA83 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C282375F936004BAA83 /* SceneDelegate.swift */; };
 		ED880C2E2375F936004BAA83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED880C2C2375F936004BAA83 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA154ABE2376071200AED264 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ED880C232375F936004BAA83 /* PassOCR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassOCR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED880C262375F936004BAA83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED880C282375F936004BAA83 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				ED880C312375F937004BAA83 /* LaunchScreen.storyboard */,
 				ED880C2F2375F937004BAA83 /* Assets.xcassets */,
 				ED880C2C2375F936004BAA83 /* Main.storyboard */,
+				CA154ABE2376071200AED264 /* User.swift */,
 				ED880C5623760180004BAA83 /* PhotoViewController.swift */,
 			);
 			path = PassOCR;
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA154ABF2376071200AED264 /* User.swift in Sources */,
 				ED880C272375F936004BAA83 /* AppDelegate.swift in Sources */,
 				ED880C292375F936004BAA83 /* SceneDelegate.swift in Sources */,
 				ED880C5723760180004BAA83 /* PhotoViewController.swift in Sources */,
