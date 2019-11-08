@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED880C272375F936004BAA83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C262375F936004BAA83 /* AppDelegate.swift */; };
+		ED880C292375F936004BAA83 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C282375F936004BAA83 /* SceneDelegate.swift */; };
+		ED880C2B2375F936004BAA83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C2A2375F936004BAA83 /* ViewController.swift */; };
+		ED880C2E2375F936004BAA83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED880C2C2375F936004BAA83 /* Main.storyboard */; };
+		ED880C302375F937004BAA83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED880C2F2375F937004BAA83 /* Assets.xcassets */; };
+		ED880C332375F937004BAA83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED880C312375F937004BAA83 /* LaunchScreen.storyboard */; };
+		ED880C3E2375F937004BAA83 /* PassOCRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C3D2375F937004BAA83 /* PassOCRTests.swift */; };
+		ED880C492375F937004BAA83 /* PassOCRUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C482375F937004BAA83 /* PassOCRUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ED880C3A2375F937004BAA83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED880C1B2375F936004BAA83 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED880C222375F936004BAA83;
+			remoteInfo = PassOCR;
+		};
+		ED880C452375F937004BAA83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED880C1B2375F936004BAA83 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED880C222375F936004BAA83;
+			remoteInfo = PassOCR;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		ED880C232375F936004BAA83 /* PassOCR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassOCR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED880C262375F936004BAA83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ED880C282375F936004BAA83 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		ED880C2A2375F936004BAA83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ED880C2D2375F936004BAA83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ED880C2F2375F937004BAA83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED880C322375F937004BAA83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ED880C342375F937004BAA83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED880C392375F937004BAA83 /* PassOCRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PassOCRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED880C3D2375F937004BAA83 /* PassOCRTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassOCRTests.swift; sourceTree = "<group>"; };
+		ED880C3F2375F937004BAA83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED880C442375F937004BAA83 /* PassOCRUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PassOCRUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED880C482375F937004BAA83 /* PassOCRUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassOCRUITests.swift; sourceTree = "<group>"; };
+		ED880C4A2375F937004BAA83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED880C202375F936004BAA83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED880C362375F937004BAA83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED880C412375F937004BAA83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED880C1A2375F936004BAA83 = {
+			isa = PBXGroup;
+			children = (
+				ED880C252375F936004BAA83 /* PassOCR */,
+				ED880C3C2375F937004BAA83 /* PassOCRTests */,
+				ED880C472375F937004BAA83 /* PassOCRUITests */,
+				ED880C242375F936004BAA83 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ED880C242375F936004BAA83 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED880C232375F936004BAA83 /* PassOCR.app */,
+				ED880C392375F937004BAA83 /* PassOCRTests.xctest */,
+				ED880C442375F937004BAA83 /* PassOCRUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED880C252375F936004BAA83 /* PassOCR */ = {
+			isa = PBXGroup;
+			children = (
+				ED880C262375F936004BAA83 /* AppDelegate.swift */,
+				ED880C282375F936004BAA83 /* SceneDelegate.swift */,
+				ED880C2A2375F936004BAA83 /* ViewController.swift */,
+				ED880C2C2375F936004BAA83 /* Main.storyboard */,
+				ED880C2F2375F937004BAA83 /* Assets.xcassets */,
+				ED880C312375F937004BAA83 /* LaunchScreen.storyboard */,
+				ED880C342375F937004BAA83 /* Info.plist */,
+			);
+			path = PassOCR;
+			sourceTree = "<group>";
+		};
+		ED880C3C2375F937004BAA83 /* PassOCRTests */ = {
+			isa = PBXGroup;
+			children = (
+				ED880C3D2375F937004BAA83 /* PassOCRTests.swift */,
+				ED880C3F2375F937004BAA83 /* Info.plist */,
+			);
+			path = PassOCRTests;
+			sourceTree = "<group>";
+		};
+		ED880C472375F937004BAA83 /* PassOCRUITests */ = {
+			isa = PBXGroup;
+			children = (
+				ED880C482375F937004BAA83 /* PassOCRUITests.swift */,
+				ED880C4A2375F937004BAA83 /* Info.plist */,
+			);
+			path = PassOCRUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ED880C222375F936004BAA83 /* PassOCR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED880C4D2375F937004BAA83 /* Build configuration list for PBXNativeTarget "PassOCR" */;
+			buildPhases = (
+				ED880C1F2375F936004BAA83 /* Sources */,
+				ED880C202375F936004BAA83 /* Frameworks */,
+				ED880C212375F936004BAA83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PassOCR;
+			productName = PassOCR;
+			productReference = ED880C232375F936004BAA83 /* PassOCR.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ED880C382375F937004BAA83 /* PassOCRTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED880C502375F937004BAA83 /* Build configuration list for PBXNativeTarget "PassOCRTests" */;
+			buildPhases = (
+				ED880C352375F937004BAA83 /* Sources */,
+				ED880C362375F937004BAA83 /* Frameworks */,
+				ED880C372375F937004BAA83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ED880C3B2375F937004BAA83 /* PBXTargetDependency */,
+			);
+			name = PassOCRTests;
+			productName = PassOCRTests;
+			productReference = ED880C392375F937004BAA83 /* PassOCRTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		ED880C432375F937004BAA83 /* PassOCRUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED880C532375F937004BAA83 /* Build configuration list for PBXNativeTarget "PassOCRUITests" */;
+			buildPhases = (
+				ED880C402375F937004BAA83 /* Sources */,
+				ED880C412375F937004BAA83 /* Frameworks */,
+				ED880C422375F937004BAA83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ED880C462375F937004BAA83 /* PBXTargetDependency */,
+			);
+			name = PassOCRUITests;
+			productName = PassOCRUITests;
+			productReference = ED880C442375F937004BAA83 /* PassOCRUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED880C1B2375F936004BAA83 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "Marcus Florentin";
+				TargetAttributes = {
+					ED880C222375F936004BAA83 = {
+						CreatedOnToolsVersion = 11.2;
+					};
+					ED880C382375F937004BAA83 = {
+						CreatedOnToolsVersion = 11.2;
+						TestTargetID = ED880C222375F936004BAA83;
+					};
+					ED880C432375F937004BAA83 = {
+						CreatedOnToolsVersion = 11.2;
+						TestTargetID = ED880C222375F936004BAA83;
+					};
+				};
+			};
+			buildConfigurationList = ED880C1E2375F936004BAA83 /* Build configuration list for PBXProject "PassOCR" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ED880C1A2375F936004BAA83;
+			productRefGroup = ED880C242375F936004BAA83 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED880C222375F936004BAA83 /* PassOCR */,
+				ED880C382375F937004BAA83 /* PassOCRTests */,
+				ED880C432375F937004BAA83 /* PassOCRUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED880C212375F936004BAA83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED880C332375F937004BAA83 /* LaunchScreen.storyboard in Resources */,
+				ED880C302375F937004BAA83 /* Assets.xcassets in Resources */,
+				ED880C2E2375F936004BAA83 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED880C372375F937004BAA83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED880C422375F937004BAA83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED880C1F2375F936004BAA83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED880C2B2375F936004BAA83 /* ViewController.swift in Sources */,
+				ED880C272375F936004BAA83 /* AppDelegate.swift in Sources */,
+				ED880C292375F936004BAA83 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED880C352375F937004BAA83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED880C3E2375F937004BAA83 /* PassOCRTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED880C402375F937004BAA83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED880C492375F937004BAA83 /* PassOCRUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ED880C3B2375F937004BAA83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED880C222375F936004BAA83 /* PassOCR */;
+			targetProxy = ED880C3A2375F937004BAA83 /* PBXContainerItemProxy */;
+		};
+		ED880C462375F937004BAA83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED880C222375F936004BAA83 /* PassOCR */;
+			targetProxy = ED880C452375F937004BAA83 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ED880C2C2375F936004BAA83 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED880C2D2375F936004BAA83 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		ED880C312375F937004BAA83 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED880C322375F937004BAA83 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ED880C4B2375F937004BAA83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ED880C4C2375F937004BAA83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ED880C4E2375F937004BAA83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z8Q82L44LS;
+				INFOPLIST_FILE = PassOCR/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "black.sombre-osmoze.PassOCR";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED880C4F2375F937004BAA83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z8Q82L44LS;
+				INFOPLIST_FILE = PassOCR/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "black.sombre-osmoze.PassOCR";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		ED880C512375F937004BAA83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z8Q82L44LS;
+				INFOPLIST_FILE = PassOCRTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "black.sombre-osmoze.PassOCRTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PassOCR.app/PassOCR";
+			};
+			name = Debug;
+		};
+		ED880C522375F937004BAA83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z8Q82L44LS;
+				INFOPLIST_FILE = PassOCRTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "black.sombre-osmoze.PassOCRTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PassOCR.app/PassOCR";
+			};
+			name = Release;
+		};
+		ED880C542375F937004BAA83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z8Q82L44LS;
+				INFOPLIST_FILE = PassOCRUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "black.sombre-osmoze.PassOCRUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PassOCR;
+			};
+			name = Debug;
+		};
+		ED880C552375F937004BAA83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z8Q82L44LS;
+				INFOPLIST_FILE = PassOCRUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "black.sombre-osmoze.PassOCRUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PassOCR;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED880C1E2375F936004BAA83 /* Build configuration list for PBXProject "PassOCR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED880C4B2375F937004BAA83 /* Debug */,
+				ED880C4C2375F937004BAA83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED880C4D2375F937004BAA83 /* Build configuration list for PBXNativeTarget "PassOCR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED880C4E2375F937004BAA83 /* Debug */,
+				ED880C4F2375F937004BAA83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED880C502375F937004BAA83 /* Build configuration list for PBXNativeTarget "PassOCRTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED880C512375F937004BAA83 /* Debug */,
+				ED880C522375F937004BAA83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED880C532375F937004BAA83 /* Build configuration list for PBXNativeTarget "PassOCRUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED880C542375F937004BAA83 /* Debug */,
+				ED880C552375F937004BAA83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ED880C1B2375F936004BAA83 /* Project object */;
+}
