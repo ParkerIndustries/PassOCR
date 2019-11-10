@@ -7,8 +7,29 @@
 //
 
 import UIKit
+import Vision
+import AVFoundation
+import Foundation
+
 
 class PhotoViewController: UIViewController {
+
+	var request: VNRecognizeTextRequest!
+
+
+	// MARK: - Vision
+
+	// Vision recognition handler.
+	func recognizeTextHandler(request: VNRequest, error: Error?) {
+		
+	}
+
+	// MARK: - Photo View Controller
+
+
+
+	// MARK: - View Controller
+
     // MARK: - Storyboard
     
 //    @IBOutlet weak var photoView: UIView!
@@ -42,6 +63,7 @@ class PhotoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		request = VNRecognizeTextRequest(completionHandler: recognizeTextHandler)
 //        actionLabel.text = "Bienvenue \(name)"
     }
     

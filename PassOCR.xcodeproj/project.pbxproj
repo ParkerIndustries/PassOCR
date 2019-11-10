@@ -16,6 +16,7 @@
 		ED880C3E2375F937004BAA83 /* PassOCRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C3D2375F937004BAA83 /* PassOCRTests.swift */; };
 		ED880C492375F937004BAA83 /* PassOCRUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C482375F937004BAA83 /* PassOCRUITests.swift */; };
 		ED880C5723760180004BAA83 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED880C5623760180004BAA83 /* PhotoViewController.swift */; };
+		EDBC213E23778D46006ADD47 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBC213D23778D46006ADD47 /* PreviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		ED880C482375F937004BAA83 /* PassOCRUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassOCRUITests.swift; sourceTree = "<group>"; };
 		ED880C4A2375F937004BAA83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED880C5623760180004BAA83 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		EDBC213D23778D46006ADD47 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				ED880C342375F937004BAA83 /* Info.plist */,
 				ED880C262375F936004BAA83 /* AppDelegate.swift */,
 				ED880C282375F936004BAA83 /* SceneDelegate.swift */,
+				EDBC213D23778D46006ADD47 /* PreviewView.swift */,
 				ED880C312375F937004BAA83 /* LaunchScreen.storyboard */,
 				ED880C2F2375F937004BAA83 /* Assets.xcassets */,
 				ED880C2C2375F936004BAA83 /* Main.storyboard */,
@@ -264,6 +267,7 @@
 			files = (
 				CA154ABF2376071200AED264 /* User.swift in Sources */,
 				ED880C272375F936004BAA83 /* AppDelegate.swift in Sources */,
+				EDBC213E23778D46006ADD47 /* PreviewView.swift in Sources */,
 				ED880C292375F936004BAA83 /* SceneDelegate.swift in Sources */,
 				ED880C5723760180004BAA83 /* PhotoViewController.swift in Sources */,
 			);
