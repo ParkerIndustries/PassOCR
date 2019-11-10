@@ -12,28 +12,103 @@ import AVFoundation
 import Foundation
 
 
-class PhotoViewController: UIViewController {
+class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
 	var request: VNRecognizeTextRequest!
+
+
+	// MARK: - AV Foundation
+
+	private let captureSession = AVCaptureSession()
+	let captureSessionQueue = DispatchQueue(label: "com.example.apple-samplecode.CaptureSessionQueue")
+
+	var captureDevice: AVCaptureDevice?
+
+	var videoDataOutput = AVCaptureVideoDataOutput()
+	let videoDataOutputQueue = DispatchQueue(label: "com.example.apple-samplecode.VideoDataOutputQueue")
+
+	var bufferAspectRatio: Double!
+
+	func setupCaptureSession() -> Void {
+
+		previewView.session = captureSession
+
+		// Configure the the front camera
+		#warning("We are not using the front camera")
+		// TODO: Use the front camera
+		guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera,
+														  for: .video,
+														  position: .back) else { fatalError("Can't create capture device") }
+
+		self.captureDevice = captureDevice
+
+
+		// Configure the back camera
+		if captureDevice.supportsSessionPreset(.iFrame1280x720) {
+			captureSession.sessionPreset = .iFrame1280x720
+			bufferAspectRatio = 1280 / 2160
+		} else {
+			captureSession.sessionPreset = .vga640x480
+			bufferAspectRatio = 640 / 480
+		}
+
+
+		guard let deviceInput = try? AVCaptureDeviceInput(device: captureDevice) else {
+			print("Could not create device input.")
+			return
+		}
+		if captureSession.canAddInput(deviceInput) {
+			captureSession.addInput(deviceInput)
+		}
+
+		videoDataOutput.alwaysDiscardsLateVideoFrames = true
+		videoDataOutput.setSampleBufferDelegate(self, queue: videoDataOutputQueue)
+		videoDataOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange]
+		if captureSession.canAddOutput(videoDataOutput) {
+			captureSession.addOutput(videoDataOutput)
+			// NOTE:
+			// There is a trade-off to be made here. Enabling stabilization will
+			// give temporally more stable results and should help the recognizer
+			// converge. But if it's enabled the VideoDataOutput buffers don't
+			// match what's displayed on screen, which makes drawing bounding
+			// boxes very hard. Disable it in this app to allow drawing detected
+			// bounding boxes on screen.
+			videoDataOutput.connection(with: AVMediaType.video)?.preferredVideoStabilizationMode = .off
+		} else {
+			print("Could not add VDO output")
+			return
+		}
+
+		// Set zoom and autofocus to help focus on very small text.
+		do {
+			try captureDevice.lockForConfiguration()
+			captureDevice.videoZoomFactor = 2
+			captureDevice.autoFocusRangeRestriction = .near
+			captureDevice.unlockForConfiguration()
+		} catch {
+			print("Could not set zoom level due to error: \(error)")
+			return
+		}
+
+		captureSession.startRunning()
+	}
+
+	func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+		// This is implemented in VisionViewController.
+	}
 
 
 	// MARK: - Vision
 
 	// Vision recognition handler.
 	func recognizeTextHandler(request: VNRequest, error: Error?) {
-		
+		// TODO: Get result from Vision
 	}
 
-	// MARK: - Photo View Controller
-
-
-
-	// MARK: - View Controller
 
     // MARK: - Storyboard
-    
-//    @IBOutlet weak var photoView: UIView!
-    
+
+	@IBOutlet weak var previewView: PreviewView!
     @IBOutlet weak var actionLabel: UILabel!
     
     // MARK: - Photo View Controller
@@ -50,21 +125,24 @@ class PhotoViewController: UIViewController {
     func createUser(name: String, surname: String) -> Void {
         let new = User(name: name, surname: surname)
         
-         // TODO: Show users values
+		// TODO: Show users values
         
         // TODO: Create timer
-        
-//        actionLabel.isHidden = true
     }
     
     // MARK: - View Controller
-    
+
+	var maskLayer = CAShapeLayer()
+
     override func viewDidLoad() {
-        super.viewDidLoad()
+		request = VNRecognizeTextRequest(completionHandler: recognizeTextHandler)
+
+		super.viewDidLoad()
+
+		setupCaptureSession()
 
         // Do any additional setup after loading the view.
-		request = VNRecognizeTextRequest(completionHandler: recognizeTextHandler)
-//        actionLabel.text = "Bienvenue \(name)"
+
     }
     
 
