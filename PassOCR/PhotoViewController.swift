@@ -94,7 +94,22 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 	}
 
 	func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-		// This is implemented in VisionViewController.
+		if let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) {
+			// Configure for running in real-time.
+			request.recognitionLevel = .fast
+			// Language correction won't help recognizing phone numbers. It also
+			// makes recognition slower.
+			request.usesLanguageCorrection = false
+			// Only run on the region of interest for maximum speed.
+//			request.regionOfInterest = regionOfInterest
+
+			let requestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .right, options: [:])
+			do {
+				try requestHandler.perform([request])
+			} catch {
+				print(error)
+			}
+		}
 	}
 
 
@@ -103,7 +118,26 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 	// Vision recognition handler.
 	func recognizeTextHandler(request: VNRequest, error: Error?) {
 		// TODO: Get result from Vision
+
+		guard let results = request.results as? [VNRecognizedTextObservation] else { return }
+
+		let maximumCandidates = 1
+
+		for visionResult in results {
+			guard let candidate = visionResult.topCandidates(maximumCandidates).first else { continue }
+
+			// Draw red boxes around any detected text, and green boxes around
+			// any detected phone numbers. The phone number may be a substring
+			// of the visionResult. If a substring, draw a green box around the
+			// number and a red box around the full string. If the number covers
+			// the full result only draw the green box.
+
+			print(candidate.string)
+		}
+
 	}
+
+
 
 
     // MARK: - Storyboard
@@ -142,6 +176,7 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 		setupCaptureSession()
 
         // Do any additional setup after loading the view.
+
 
     }
     
