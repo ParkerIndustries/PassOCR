@@ -149,11 +149,15 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 			tracker.logFrame(strings: [candidate.string])
 		}
 
-		if tracker.bestString.count >= 2 {
-			let bestTwo = tracker.bestString.prefix(2)
+		if tracker.bestString.count >= 3 {
+            let bests = tracker.bestString.prefix(3)
 
-			if createUser(name: bestTwo.first!.capitalized(with: .autoupdatingCurrent),
-						  surname: bestTwo.last!.uppercased(with: .autoupdatingCurrent)) {
+            let bestTwo = bests.drop { string -> Bool in
+                return string.rangeOfCharacter(from: .decimalDigits) != nil
+            }
+            
+			if createUser(name: bestTwo.last!.capitalized(with: .autoupdatingCurrent),
+						  surname: bestTwo.first!.uppercased(with: .autoupdatingCurrent)) {
 				print("Find \(bestTwo.first!), \(bestTwo.last!)")
 			}
 		}
@@ -166,7 +170,13 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
     @IBOutlet weak var actionLabel: UILabel!
 	@IBOutlet weak var usersItem: UIBarButtonItem!
 	@IBOutlet weak var shareItem: UIBarButtonItem!
-
+    
+    // MARK: Card
+    
+    @IBOutlet weak var cardView: CardView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var surnameLabel: UILabel!
+    
 
 	@IBAction func changeCamera(_ sender: Any) {
 
@@ -199,17 +209,26 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
     var currentUser: User? = nil
     // MARK: Recognition
     
-    // TODO: Create User w/ name & surname
-   
-    // TODO: Create timer
+    private var presentCard: Bool = false
+    private var cardValid: Bool = false
+    
     func createUser(name: String, surname: String) -> Bool {
         let new = User(name: name, surname: surname)
 
 		guard !users.contains(new) else { return false }
 
 		users.append(new)
-		// TODO: Show users values
-
+        presentCard = true
+		
+        DispatchQueue.main.async {
+            
+            self.nameLabel.text = new.name
+            self.nameLabel.isHidden = false
+            self.surnameLabel.text = new.surname
+            self.surnameLabel.isHidden = false
+            self.cardView.isHidden = false
+        }
+        
 
         // TODO: Create timer
 
