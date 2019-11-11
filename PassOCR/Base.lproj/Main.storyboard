@@ -33,15 +33,30 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n26-IU-aaa">
+                                <rect key="frame" x="348" y="812" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="hbw-iY-KC1"/>
+                                    <constraint firstAttribute="height" constant="50" id="r51-fK-Le5"/>
+                                </constraints>
+                                <state key="normal" image="camera.rotate" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large" weight="semibold"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PqU-gq-Bq6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="n26-IU-aaa" secondAttribute="trailing" constant="16" id="8KG-9H-f1d"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="F8p-K8-nZO" secondAttribute="bottom" constant="230" id="DTy-2O-1dE"/>
                             <constraint firstItem="qnn-aq-4Bx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="G3s-6R-ik2"/>
                             <constraint firstItem="F8p-K8-nZO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="I3m-iT-inQ"/>
                             <constraint firstItem="F8p-K8-nZO" firstAttribute="top" secondItem="qnn-aq-4Bx" secondAttribute="bottom" constant="230" id="Jq4-Jm-89Y"/>
                             <constraint firstItem="qnn-aq-4Bx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="U3C-RC-KXX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F8p-K8-nZO" secondAttribute="trailing" constant="10" id="mLf-aH-cNO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="n26-IU-aaa" secondAttribute="bottom" id="v3f-AL-3Yz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -52,10 +67,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138.8671875" y="138.79941434846265"/>
+            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </scene>
     </scenes>
     <resources>
+        <image name="camera.rotate" catalog="system" width="64" height="48"/>
         <namedColor name="Tint">
             <color red="0.18431372549019609" green="0.43529411764705883" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

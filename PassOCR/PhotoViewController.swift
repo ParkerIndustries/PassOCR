@@ -29,16 +29,18 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 
 	var bufferAspectRatio: Double!
 
+	var cameraPosition : AVCaptureDevice.Position = .front
+
 	func setupCaptureSession() -> Void {
 
 		previewView.session = captureSession
 
 		// Configure the the front camera
-		#warning("We are not using the front camera")
 		// TODO: Use the front camera
 		guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera,
 														  for: .video,
-														  position: .back) else { fatalError("Can't create capture device") }
+														  position: cameraPosition) else { fatalError("Can't create capture device") }
+
 
 		self.captureDevice = captureDevice
 
@@ -57,6 +59,12 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 			print("Could not create device input.")
 			return
 		}
+
+		// Clear the session
+
+		// Removing the last camera use
+		captureSession.inputs.forEach({ captureSession.removeInput($0) })
+
 		if captureSession.canAddInput(deviceInput) {
 			captureSession.addInput(deviceInput)
 		}
@@ -64,6 +72,10 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 		videoDataOutput.alwaysDiscardsLateVideoFrames = true
 		videoDataOutput.setSampleBufferDelegate(self, queue: videoDataOutputQueue)
 		videoDataOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange]
+
+		// Remove camera output
+		captureSession.outputs.forEach({ captureSession.removeOutput($0) })
+
 		if captureSession.canAddOutput(videoDataOutput) {
 			captureSession.addOutput(videoDataOutput)
 			// NOTE:
@@ -82,8 +94,7 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 		// Set zoom and autofocus to help focus on very small text.
 		do {
 			try captureDevice.lockForConfiguration()
-			captureDevice.videoZoomFactor = 2
-			captureDevice.autoFocusRangeRestriction = .near
+			captureDevice.videoZoomFactor = 1
 			captureDevice.unlockForConfiguration()
 		} catch {
 			print("Could not set zoom level due to error: \(error)")
@@ -144,7 +155,14 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 
 	@IBOutlet weak var previewView: PreviewView!
     @IBOutlet weak var actionLabel: UILabel!
-    
+
+
+	@IBAction func changeCamera(_ sender: Any) {
+
+		cameraPosition = cameraPosition == .front ? .back : .front
+		setupCaptureSession()
+	}
+
     // MARK: - Photo View Controller
     /// Tous les utilisateurs scannés
     var users: [User] = []
@@ -158,7 +176,7 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
     // TODO: Create timer
     func createUser(name: String, surname: String) -> Void {
         let new = User(name: name, surname: surname)
-        
+
 		// TODO: Show users values
         
         // TODO: Create timer
