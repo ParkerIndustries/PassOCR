@@ -36,7 +36,6 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 		previewView.session = captureSession
 
 		// Configure the the front camera
-		// TODO: Use the front camera
 		guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera,
 														  for: .video,
 														  position: cameraPosition) else { fatalError("Can't create capture device") }
@@ -126,6 +125,8 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 
 	// MARK: - Vision
 
+	private let tracker = StringTracker()
+
 	// Vision recognition handler.
 	func recognizeTextHandler(request: VNRequest, error: Error?) {
 		// TODO: Get result from Vision
@@ -143,12 +144,16 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 			// number and a red box around the full string. If the number covers
 			// the full result only draw the green box.
 
-			print(candidate.string)
+			tracker.logFrame(strings: [candidate.string])
 		}
 
+		if tracker.bestString.count >= 2 {
+			let bestTwo = tracker.bestString.prefix(2)
+			print("Find \(bestTwo.first!), \(bestTwo.last!)")
+			createUser(name: bestTwo.first!.capitalized(with: .autoupdatingCurrent),
+					   surname: bestTwo.last!.uppercased(with: .autoupdatingCurrent))
+		}
 	}
-
-
 
 
     // MARK: - Storyboard
