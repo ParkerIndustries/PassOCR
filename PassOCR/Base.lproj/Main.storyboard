@@ -41,7 +41,11 @@
                                             <action selector="save:" destination="BYZ-38-t0r" id="Ikx-pM-UOa"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem enabled="NO" title="0 persone" id="lgx-E9-XTi"/>
+                                    <barButtonItem enabled="NO" title="0 persone" id="lgx-E9-XTi">
+                                        <connections>
+                                            <action selector="save:" destination="BYZ-38-t0r" id="BGw-1v-NrG"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="hEj-3g-qyK"/>
                                     <barButtonItem title="Item" image="camera.rotate" catalog="system" id="bMG-m1-s0I">
                                         <connections>
