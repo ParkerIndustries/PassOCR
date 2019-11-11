@@ -52,11 +52,11 @@ class StringTracker {
 		// Also find the (non-pruned) string with the greatest count.
 		for (string, obs) in seenStrings {
 			// Remove previously seen text after 30 frames (~1s).
-			if obs.lastSeen < frameIndex - 60 {
+			if obs.lastSeen < frameIndex - 30 {
 				obsoleteStrings.append(string)
 				bestString.removeAll(where: { $0 == string })
 
-			} else if obs.count > 10, !bestString.contains(string) {
+			} else if obs.count > 30, !bestString.contains(string) {
 				// If the string as been seen more than 10 times
 				bestString.append(string)
 			}

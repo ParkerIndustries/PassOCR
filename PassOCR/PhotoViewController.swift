@@ -110,7 +110,8 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 			request.recognitionLevel = .fast
 			// Language correction won't help recognizing phone numbers. It also
 			// makes recognition slower.
-			request.usesLanguageCorrection = false
+			request.usesLanguageCorrection = true
+			request.recognitionLanguages = ["fr"]
 			// Only run on the region of interest for maximum speed.
 //			request.regionOfInterest = regionOfInterest
 
@@ -239,6 +240,7 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 			documentInteraction.name = "Peoples"
 			documentInteraction.uti = "csv"
 			documentInteraction.annotation = "\(users.count) passed."
+			documentInteraction.delegate = self
 
 			documentInteraction.presentOptionsMenu(from: sender, animated: true)
 
