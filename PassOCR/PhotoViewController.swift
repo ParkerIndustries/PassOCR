@@ -12,7 +12,8 @@ import AVFoundation
 import Foundation
 
 
-class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate,
+							UIDocumentInteractionControllerDelegate {
 
 	var request: VNRecognizeTextRequest!
 
@@ -149,9 +150,11 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 
 		if tracker.bestString.count >= 2 {
 			let bestTwo = tracker.bestString.prefix(2)
-			print("Find \(bestTwo.first!), \(bestTwo.last!)")
-			createUser(name: bestTwo.first!.capitalized(with: .autoupdatingCurrent),
-					   surname: bestTwo.last!.uppercased(with: .autoupdatingCurrent))
+
+			if createUser(name: bestTwo.first!.capitalized(with: .autoupdatingCurrent),
+						  surname: bestTwo.last!.uppercased(with: .autoupdatingCurrent)) {
+				print("Find \(bestTwo.first!), \(bestTwo.last!)")
+			}
 		}
 	}
 
@@ -160,17 +163,36 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 
 	@IBOutlet weak var previewView: PreviewView!
     @IBOutlet weak var actionLabel: UILabel!
+	@IBOutlet weak var usersItem: UIBarButtonItem!
+	@IBOutlet weak var shareItem: UIBarButtonItem!
 
 
 	@IBAction func changeCamera(_ sender: Any) {
 
 		cameraPosition = cameraPosition == .front ? .back : .front
 		setupCaptureSession()
+		// TODO: Animate
 	}
 
     // MARK: - Photo View Controller
     /// Tous les utilisateurs scannés
-    var users: [User] = []
+	var users: [User] = [] {
+		didSet {
+
+			DispatchQueue.main.async {
+				self.usersItem.isEnabled = !self.users.isEmpty
+				self.shareItem.isEnabled = !self.users.isEmpty
+
+				guard !self.users.isEmpty else {
+					self.usersItem.title = "0 Personne"
+					return
+				}
+
+				self.usersItem.title = "\(self.users.count) Personne\(self.users.count > 1 ? "s" : "")"
+			}
+		}
+
+	}
     
     /// Utilisateur actuellement en train de reconnaître
     var currentUser: User? = nil
@@ -179,15 +201,54 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
     // TODO: Create User w/ name & surname
    
     // TODO: Create timer
-    func createUser(name: String, surname: String) -> Void {
+    func createUser(name: String, surname: String) -> Bool {
         let new = User(name: name, surname: surname)
 
+		guard !users.contains(new) else { return false }
+
+		users.append(new)
 		// TODO: Show users values
-        
+
+
         // TODO: Create timer
+
+		return true
     }
     
-    // MARK: - View Controller
+	@IBAction func save(_ sender: UIBarButtonItem) {
+
+		guard !users.isEmpty else { return }
+		// Continue if we had scan users
+
+		let peoples = users
+
+		// Create CSV
+		let csv = CSV(peoples)
+
+		// Presente CSV
+
+		// Saving file on disk temporaly
+		var link = FileManager.default.temporaryDirectory
+		link.appendPathComponent("Peoples")
+		link.appendPathExtension("csv")
+
+		do {
+			try csv.write(to: link)
+
+			let documentInteraction = UIDocumentInteractionController(url: link)
+			documentInteraction.name = "Peoples"
+			documentInteraction.uti = "csv"
+			documentInteraction.annotation = "\(users.count) passed."
+
+			documentInteraction.presentOptionsMenu(from: sender, animated: true)
+
+		} catch {
+			// TODO: display error
+			print(error)
+		}
+
+	}
+	// MARK: - View Controller
 
 	var maskLayer = CAShapeLayer()
 
@@ -213,5 +274,12 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
         // Pass the selected object to the new view controller.
     }
     */
+
+	// MARK: - UI Document Interaction Controller Delegate
+
+	func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+
+		return self
+	}
 
 }

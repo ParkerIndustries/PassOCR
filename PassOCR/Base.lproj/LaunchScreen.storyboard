@@ -14,14 +14,44 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V54-hq-Wc0">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem enabled="NO" title="Save" image="square.and.arrow.up" catalog="system" id="4eS-p2-V2T"/>
+                                    <barButtonItem enabled="NO" title="0 Personne" id="rx5-55-uVn"/>
+                                    <barButtonItem systemItem="flexibleSpace" id="jUS-ZS-2DO"/>
+                                    <barButtonItem enabled="NO" title="Rotate" image="camera.rotate" catalog="system" id="mbr-k0-kVf"/>
+                                </items>
+                            </toolbar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LauchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="0qT-Hq-wMF">
+                                <rect key="frame" x="20" y="348.5" width="374" height="199"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0qT-Hq-wMF" secondAttribute="height" multiplier="15:8" id="W14-nH-Cqk"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="V54-hq-Wc0" secondAttribute="bottom" id="6bl-Of-pSo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0qT-Hq-wMF" secondAttribute="trailing" constant="20" id="BoK-TE-Rnc"/>
+                            <constraint firstItem="0qT-Hq-wMF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="K9g-Kl-Ok2"/>
+                            <constraint firstItem="V54-hq-Wc0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="q7A-6b-oyY"/>
+                            <constraint firstItem="0qT-Hq-wMF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wBg-WU-4Ts"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V54-hq-Wc0" secondAttribute="trailing" id="yuF-vU-n6S"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LauchLogo" width="356" height="106"/>
+        <image name="camera.rotate" catalog="system" width="64" height="48"/>
+        <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
+    </resources>
     <color key="tintColor" name="Tint"/>
 </document>

@@ -8,6 +8,21 @@
 
 import Foundation
 
+func CSV(_ users: [User]) -> Data {
+	var file = String()
+
+	// CSV header line
+	file += "Name, SURNAME\n"
+
+	for user in users {
+		// Add user row
+		file += "\(user.name), \(user.surname)\n"
+	}
+
+	return file.data(using: .utf8)!
+}
+
+
 class StringTracker {
 	var frameIndex: Int64 = 0
 
