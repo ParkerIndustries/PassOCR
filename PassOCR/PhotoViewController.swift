@@ -30,7 +30,7 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 
 	var bufferAspectRatio: Double!
 
-	var cameraPosition : AVCaptureDevice.Position = .front
+    var cameraPosition : AVCaptureDevice.Position = .back
 
 	func setupCaptureSession() -> Void {
 
@@ -111,7 +111,7 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 			// Language correction won't help recognizing phone numbers. It also
 			// makes recognition slower.
 			request.usesLanguageCorrection = true
-			request.recognitionLanguages = ["fr"]
+			request.recognitionLanguages = ["fr", "fr_FR", "fra"]
 			// Only run on the region of interest for maximum speed.
 //			request.regionOfInterest = regionOfInterest
 
@@ -131,7 +131,7 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 
 	// Vision recognition handler.
 	func recognizeTextHandler(request: VNRequest, error: Error?) {
-		// TODO: Get result from Vision
+        guard !presentCard else { return }
 
 		guard let results = request.results as? [VNRecognizedTextObservation] else { return }
 
@@ -149,15 +149,11 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 			tracker.logFrame(strings: [candidate.string])
 		}
 
-		if tracker.bestString.count >= 3 {
-            let bests = tracker.bestString.prefix(3)
+		if tracker.bestString.count >= 2 {
+            let bestTwo = tracker.bestString.prefix(2)
 
-            let bestTwo = bests.drop { string -> Bool in
-                return string.rangeOfCharacter(from: .decimalDigits) != nil
-            }
-            
-			if createUser(name: bestTwo.last!.capitalized(with: .autoupdatingCurrent),
-						  surname: bestTwo.first!.uppercased(with: .autoupdatingCurrent)) {
+			if createUser(name: bestTwo.first!.capitalized(with: .autoupdatingCurrent),
+						  surname: bestTwo.last!.uppercased(with: .autoupdatingCurrent)) {
 				print("Find \(bestTwo.first!), \(bestTwo.last!)")
 			}
 		}
@@ -176,6 +172,7 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
     @IBOutlet weak var cardView: CardView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var surnameLabel: UILabel!
+    @IBOutlet weak var resetItem: UIBarButtonItem!
     
 
 	@IBAction func changeCamera(_ sender: Any) {
@@ -185,6 +182,11 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 		// TODO: Animate
 	}
 
+    @IBAction func reset(_ sender: Any) {
+        
+        users.removeAll()
+        tracker.reset()
+    }
     // MARK: - Photo View Controller
     /// Tous les utilisateurs scannés
 	var users: [User] = [] {
@@ -193,7 +195,7 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 			DispatchQueue.main.async {
 				self.usersItem.isEnabled = !self.users.isEmpty
 				self.shareItem.isEnabled = !self.users.isEmpty
-
+                self.resetItem.isEnabled = !self.users.isEmpty
 				guard !self.users.isEmpty else {
 					self.usersItem.title = "0 Personne"
 					return
@@ -210,29 +212,68 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
     // MARK: Recognition
     
     private var presentCard: Bool = false
-    private var cardValid: Bool = false
     
     func createUser(name: String, surname: String) -> Bool {
         let new = User(name: name, surname: surname)
 
-		guard !users.contains(new) else { return false }
+		guard !users.contains(new) else {
+            DispatchQueue.main.async {
+                let prev = self.actionLabel.textColor
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                    self.actionLabel.text =  "Déjà scanné"
+                    self.actionLabel.textColor = .orange
+                }) { _ in
+                    DispatchQueue.main.asyncAfter(deadline: .now()) {
+                        self.actionLabel.text =  "Scannez votre pass"
+                        self.actionLabel.textColor = prev
+                    }
+                }
+            }
+
+            return false
+        }
 
 		users.append(new)
         presentCard = true
-		
         DispatchQueue.main.async {
             
             self.nameLabel.text = new.name
-            self.nameLabel.isHidden = false
             self.surnameLabel.text = new.surname
-            self.surnameLabel.isHidden = false
+            self.cardView.alpha = 0
+            
+            // Animaate
+            let end =  self.cardView.bounds.origin.y
+            
+            self.cardView.bounds.origin.y -= 10
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut,animations: {
+                self.cardView.alpha = 1
+                 self.cardView.bounds.origin.y = end
+            }) { completed in
+                if completed {
+                    AudioServicesPlaySystemSound(1407)
+                    // TODO: Haptic feedback
+                }
+            }
+            
             self.cardView.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+                self.hideCard()
+            }
+            
         }
-        
-
-        // TODO: Create timer
 
 		return true
+    }
+
+    private func hideCard() -> Void {
+        UIView.animate(withDuration: 1, delay: 1, options: .curveLinear, animations: {
+            self.cardView.alpha = 0
+            self.cardView.bounds.origin.y -= 10
+            self.cardView.isHidden = true
+        }) { completed in
+            self.presentCard = !completed
+            // Play sounnd and vibration
+        }
     }
     
 	@IBAction func save(_ sender: UIBarButtonItem) {

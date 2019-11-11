@@ -56,7 +56,7 @@ class StringTracker {
 				obsoleteStrings.append(string)
 				bestString.removeAll(where: { $0 == string })
 
-			} else if obs.count > 30, !bestString.contains(string) {
+            } else if obs.count > 45, !bestString.contains(string), string.rangeOfCharacter(from: .decimalDigits) == nil {
 				// If the string as been seen more than 10 times
 				bestString.append(string)
 			}
@@ -70,8 +70,8 @@ class StringTracker {
 		frameIndex += 1
 	}
 
-	func reset(string: String) {
-		seenStrings.removeValue(forKey: string)
-		bestString = []
+	func reset() {
+		seenStrings.removeAll()
+        bestString.removeAll()
 	}
 }
