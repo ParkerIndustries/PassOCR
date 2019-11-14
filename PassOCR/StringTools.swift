@@ -56,7 +56,8 @@ class StringTracker {
 				obsoleteStrings.append(string)
 				bestString.removeAll(where: { $0 == string })
 
-            } else if obs.count > 45, !bestString.contains(string), string.rangeOfCharacter(from: .decimalDigits) == nil {
+            } else if obs.count > 45, !bestString.contains(string),
+			(string.rangeOfCharacter(from: .decimalDigits) == nil) || string.hasSuffix("FR") {
 				// If the string as been seen more than 10 times
 				bestString.append(string)
 			}

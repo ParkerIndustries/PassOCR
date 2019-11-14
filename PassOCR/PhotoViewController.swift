@@ -149,10 +149,16 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 			tracker.logFrame(strings: [candidate.string])
 		}
 
-		if tracker.bestString.count >= 2 {
-            let bestTwo = tracker.bestString.prefix(2)
+		if tracker.bestString.count >= 3 {
+            let bests = tracker.bestString.prefix(3)
 
-			if createUser(name: bestTwo.first!.capitalized(with: .autoupdatingCurrent),
+			guard let id = bests.first(where: {
+				$0.rangeOfCharacter(from: .decimalDigits) != nil && $0.count == 15 && $0.hasSuffix("fr") }) else { return  }
+
+			let bestTwo = bests.drop(while: { $0.rangeOfCharacter(from: .decimalDigits) != nil })
+
+			if createUser(id: id.uppercased(with: .autoupdatingCurrent),
+						  name: bestTwo.first!.capitalized(with: .autoupdatingCurrent),
 						  surname: bestTwo.last!.uppercased(with: .autoupdatingCurrent)) {
 				print("Find \(bestTwo.first!), \(bestTwo.last!)")
 			}
@@ -166,13 +172,16 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
     @IBOutlet weak var actionLabel: UILabel!
 	@IBOutlet weak var usersItem: UIBarButtonItem!
 	@IBOutlet weak var shareItem: UIBarButtonItem!
-    
+	@IBOutlet weak var focusView: ScopeView!
+
+	
     // MARK: Card
     
     @IBOutlet weak var cardView: CardView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var surnameLabel: UILabel!
-    @IBOutlet weak var resetItem: UIBarButtonItem!
+	@IBOutlet weak var idLabel: UILabel!
+	@IBOutlet weak var resetItem: UIBarButtonItem!
     
 
 	@IBAction func changeCamera(_ sender: Any) {
@@ -213,10 +222,10 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
     
     private var presentCard: Bool = false
     
-    func createUser(name: String, surname: String) -> Bool {
-        let new = User(name: name, surname: surname)
+	func createUser(id: String, name: String, surname: String) -> Bool {
+		let new = User(id: id, name: name, surname: surname)
 
-		guard !users.contains(new) else {
+		guard !users.contains(where: { $0.id == new.id }) else {
             DispatchQueue.main.async {
                 let prev = self.actionLabel.textColor
                 UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
@@ -239,9 +248,10 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
             
             self.nameLabel.text = new.name
             self.surnameLabel.text = new.surname
-            self.cardView.alpha = 0
-            
+			self.idLabel.text = new.id
+
             // Animaate
+			self.cardView.alpha = 0
             let end =  self.cardView.bounds.origin.y
             
             self.cardView.bounds.origin.y -= 10
@@ -296,13 +306,14 @@ class PhotoViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 		do {
 			try csv.write(to: link)
 
-			let documentInteraction = UIDocumentInteractionController(url: link)
-			documentInteraction.name = "Peoples"
-			documentInteraction.uti = "csv"
-			documentInteraction.annotation = "\(users.count) passed."
-			documentInteraction.delegate = self
 
-			documentInteraction.presentOptionsMenu(from: sender, animated: true)
+			let activityVC = UIActivityViewController(activityItems: [link], applicationActivities: nil)
+			activityVC.excludedActivityTypes = [.addToReadingList, .assignToContact, .openInIBooks,
+												.postToFacebook, .postToVimeo, .postToWeibo, .postToTwitter, .postToFlickr, .postToTencentWeibo,
+												.print, .saveToCameraRoll, .markupAsPDF]
+			activityVC.popoverPresentationController?.barButtonItem = sender
+
+			present(activityVC, animated: true, completion: nil)
 
 		} catch {
 			// TODO: display error
